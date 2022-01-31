@@ -1,6 +1,7 @@
 .section{
   background-color: #e3e3cd;
   margin: 0;
+  overflow: hidden;
 }
 .section ul{user-select: none;}
 .search{
@@ -19,4 +20,7 @@
 }
 .categories, .articles{
   list-style: none;
+}
+.category{
+  
 }

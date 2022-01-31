@@ -3,7 +3,7 @@ import React from "react";
 import c from "./HelpArticleLi.module.css";
 
 const HelpArticleLi = (props) => {
-  // console.log(props)
+  // console.log(props);
   // const a = props.article; 
   const categories = props.categories.map((c) => (
     <span className={c.category} key={c}>/{c}</span>

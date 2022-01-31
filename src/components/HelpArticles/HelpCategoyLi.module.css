@@ -13,3 +13,9 @@
   background-color: white;
   color: #49494d;
 }
+
+@media (max-width:337px) {
+  .li{
+    margin: 1px;
+  }
+}

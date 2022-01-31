@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate
+import {
+  useNavigate,
   // , Routes, Route
- } from "react-router-dom";
+} from "react-router-dom";
 import c from "./HelpPage.module.css";
 
 import SearchCategoriesNav from "../components/SearchCategoriesNav/SearchCategoriesNav";
@@ -29,15 +30,17 @@ const HelpPage = () => {
   });
 
   useEffect(() => {
-    fetch("./helpdatabase.json").then((res) =>
+    fetch("https://minastop-mern.herokuapp.com/help").then((res) =>
       res.json().then((data) => {
         setArticles(data);
         setfilteredArticles(data);
+        // console.log(data)
       })
     );
   }, []);
+
   useEffect(() => {
-    //gets all categories based off articles state
+    //gets all categories based off 'articles' state
     const cat = [];
     articles.forEach((a) => {
       a.categories.forEach((category) =>
@@ -45,7 +48,7 @@ const HelpPage = () => {
       );
     });
     setCategories(cat);
-    console.log(articles);
+    // console.log(articles);
   }, [articles]);
 
   function toggleArticles(id) {
@@ -65,14 +68,18 @@ const HelpPage = () => {
   }, [articleId]);
 
   function changeActiveCategory(category) {
-    setactiveCategory(category);
+    category === "all" ? setactiveCategory("") : setactiveCategory(category);
   }
   useEffect(() => {
     //renders articles under activecategory
-    const filtered = articles.filter((a) =>
-      a.categories.includes(activeCategory)
-    );
-    setfilteredArticles(filtered);
+    if(activeCategory){
+      const filtered = articles.filter((a) =>
+        a.categories.includes(activeCategory)
+      );
+      setfilteredArticles(filtered);
+    }else{
+      setfilteredArticles(articles)
+    }
   }, [activeCategory]);
 
   return (
@@ -84,6 +91,13 @@ const HelpPage = () => {
       <section className={c.section2}>
         <nav>
           <ul className={c.categories}>
+            <HelpCategoyLi
+              className={c.category}
+              key={c}
+              text={"all"}
+              active={activeCategory}
+              onClick={changeActiveCategory}
+            />
             {categories.map((c) => (
               <HelpCategoyLi
                 className={c.category}
@@ -99,7 +113,7 @@ const HelpPage = () => {
           {!articleId &&
             filteredArticles.map((a) => (
               <HelpArticleLi
-                key={a.id}
+                key={a._id}
                 id={a.id}
                 title={a.title}
                 caption={a.caption}

@@ -12,6 +12,7 @@ const ProductCard = (props) => {
         <p className={c.category}>{props.category}</p>
         <img src={props.img} alt={props.name} />
         <p className={c.name}>{props.name}</p>
+        <span>Stock: {props.stock}</span>
       </Link>
       <div className={c.div}>
         <IconButton className={c.addCartBtn}>
