@@ -10,10 +10,10 @@ import SearchBar from "../components/SearchBar/SearchBar";
 
 import HelpArticleLi from "../components/HelpArticles/HelpArticleLi";
 import HelpCategoyLi from "../components/HelpArticles/HelpCategoyLi";
-import Article from "../components/HelpArticles/Article";
+// import Article from "../components/HelpArticles/Article";
 
 const HelpPage = () => {
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const [articles, setArticles] = useState([]);
   const [filteredArticles, setfilteredArticles] = useState([]);
   const [categories, setCategories] = useState([]);
@@ -33,6 +33,7 @@ const HelpPage = () => {
     fetch("https://minastop-mern.herokuapp.com/help").then((res) =>
       res.json().then((data) => {
         setArticles(data);
+        // props.setHelpArticles(data)
         setfilteredArticles(data);
         // console.log(data)
       })
@@ -50,12 +51,13 @@ const HelpPage = () => {
     setCategories(cat);
     // console.log(articles);
   }, [articles]);
-
+  // console.log(window.location.href)
   function toggleArticles(id) {
-    navigate(`/help/${id}`);
-    console.log(id);
-    setArticleId(id);
-    console.log.log(articleId);
+    // navigate(`/help/${id}`);
+    // console.log(id);
+    // setArticleId(id);
+    // console.log(articleId);
+    window.open(window.location.href + '/' + id);
   }
   useEffect(() => {
     const article = articles.filter((a) => a.id === articleId);
@@ -114,7 +116,7 @@ const HelpPage = () => {
             filteredArticles.map((a) => (
               <HelpArticleLi
                 key={a._id}
-                id={a.id}
+                id={a._id}
                 title={a.title}
                 caption={a.caption}
                 date={a.date}
@@ -122,11 +124,9 @@ const HelpPage = () => {
                 toggleArticles={toggleArticles}
               />
             ))}
-          {/* {articleId && <Article article={selectedArticle} />} */}
+        
         </ul>
-        {/* <Routes>
-          <Route path={`/help/${selectedArticle.id}`} element={<Article />} />
-        </Routes> */}
+        
       </section>
     </section>
   );

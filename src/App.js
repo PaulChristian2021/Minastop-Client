@@ -1,3 +1,4 @@
+// import { useState, useEffect } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./App.css";
 import Header from "./components/Header/Header";
@@ -13,6 +14,16 @@ import ContactPage from "./pages/ContactPage";
 import BrowsePage from "./pages/BrowsePage";
 
 function App() {
+
+  // const [helpArticles, setHelpArticles] = useState([]);
+  
+  // useEffect(() => {
+  //   console.log(helpArticles)
+  //   return ()=>{console.log(helpArticles)}
+  // }, [helpArticles]);
+  
+
+
   return (
     <>
       <BrowserRouter>
@@ -26,7 +37,7 @@ function App() {
           <Route path="/cart" element={<CartPage />} />
           <Route path="/sign" element={<SignInSignUpPage />} />
           <Route path="/help" element={<HelpPage />} />
-          <Route path="/help/:helpArticle" element={<Article />} />
+          <Route path="/help/:articleId" element={<Article />} />
             {/* <Route path="/help/:list" element={<HelpPage />}/>
             <Route path="/help/list/:articleId" element={<HelpPage />}/> */}
           {/* </Route> */}
