@@ -6,6 +6,9 @@ This is the frontend a project I made that utilizes the **MERN** (MongoDB Expres
 The backend part of Minastop is located here: https://github.com/PaulChristian2021/Minastop-Server
 
 (under development)
+-The netlify deployment of this app is not working properly and was just put up for testing purpose.
+-Desirable functions and features under planning.
+-App incomplete.
 
 =============================================
 
