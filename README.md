@@ -1,7 +1,7 @@
 # Minastop Ecommerce 
 
 
-This is the frontend a hobby project I made that utilizes the **MERN** (MongoDB Express NodeJs React) stack.
+This is the frontend a hobby project I made that utilizes the **MERN** (MongoDB Express React NodeJs) stack.
 
 The backend part of Minastop is located here: https://github.com/PaulChristian2021/Minastop-Server
 
