@@ -1,3 +1,14 @@
+# Minastop Ecommerce 
+
+
+This is the frontend a hobby project I made that utilizes the **MERN** (MongoDB Express NodeJs React) stack.
+
+The backend part of Minastop is located here: https://github.com/PaulChristian2021/Minastop-Server
+
+(under development)
+
+=============================================
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
