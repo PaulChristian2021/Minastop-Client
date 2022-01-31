@@ -1,4 +1,4 @@
-# Minastop Ecommerce 
+# Minastop Ecommerce https://minastop.netlify.app/
 
 
 This is the frontend a project I made that utilizes the **MERN** (MongoDB Express React NodeJs) stack.
