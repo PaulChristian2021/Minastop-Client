@@ -7,7 +7,7 @@
 .search{
 
 }
-.section2{
+.section2, .loading{
   display: flex;
   flex-direction: column;
 }
@@ -23,4 +23,13 @@
 }
 .category{
   
+}
+.loading{
+  justify-content: center;
+  align-items: center;
+  height: 362px;
+}
+.looking{
+  margin-top: 20px;
+  font-size: 18px;
 }
