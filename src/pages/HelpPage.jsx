@@ -11,6 +11,7 @@ import SearchBar from "../components/SearchBar/SearchBar";
 import HelpArticleLi from "../components/HelpArticles/HelpArticleLi";
 import HelpCategoyLi from "../components/HelpArticles/HelpCategoyLi";
 // import Article from "../components/HelpArticles/Article";
+import MoonLoader from "react-spinners/MoonLoader";
 
 const HelpPage = () => {
   // const navigate = useNavigate();
@@ -28,6 +29,8 @@ const HelpPage = () => {
       "If you encounter technical issues on the app, such as problem loading pages, payment not processing, inability to add a product to cart, or inability to send messages via Minastop, contact us.",
     categories: ["tech", "account"],
   });
+
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     fetch("https://minastop-mern.herokuapp.com/help").then((res) =>
@@ -50,6 +53,9 @@ const HelpPage = () => {
     });
     setCategories(cat);
     // console.log(articles);
+    return () => {
+      setIsLoading(false);
+    };
   }, [articles]);
   // console.log(window.location.href)
   function toggleArticles(id) {
@@ -57,7 +63,7 @@ const HelpPage = () => {
     // console.log(id);
     // setArticleId(id);
     // console.log(articleId);
-    window.open(window.location.href + '/' + id);
+    window.open(window.location.href + "/" + id);
   }
   useEffect(() => {
     const article = articles.filter((a) => a.id === articleId);
@@ -74,13 +80,13 @@ const HelpPage = () => {
   }
   useEffect(() => {
     //renders articles under activecategory
-    if(activeCategory){
+    if (activeCategory) {
       const filtered = articles.filter((a) =>
         a.categories.includes(activeCategory)
       );
       setfilteredArticles(filtered);
-    }else{
-      setfilteredArticles(articles)
+    } else {
+      setfilteredArticles(articles);
     }
   }, [activeCategory]);
 
@@ -90,44 +96,52 @@ const HelpPage = () => {
       <SearchCategoriesNav className={c.nav}>
         <SearchBar placeholder="How can we help?" />
       </SearchCategoriesNav>
-      <section className={c.section2}>
-        <nav>
-          <ul className={c.categories}>
-            <HelpCategoyLi
-              className={c.category}
-              key={c}
-              text={"all"}
-              active={activeCategory}
-              onClick={changeActiveCategory}
-            />
-            {categories.map((c) => (
+      {isLoading && (
+        <div className={c.loading}>
+          
+            <MoonLoader />
+          
+          <p className={c.looking}>Looking for help...</p>
+        </div>
+      )}
+      {!isLoading && (
+        <section className={c.section2}>
+          <nav>
+            <ul className={c.categories}>
               <HelpCategoyLi
                 className={c.category}
                 key={c}
-                text={c}
+                text={"all"}
                 active={activeCategory}
                 onClick={changeActiveCategory}
               />
-            ))}
+              {categories.map((c) => (
+                <HelpCategoyLi
+                  className={c.category}
+                  key={c}
+                  text={c}
+                  active={activeCategory}
+                  onClick={changeActiveCategory}
+                />
+              ))}
+            </ul>
+          </nav>
+          <ul className={c.articles}>
+            {!articleId &&
+              filteredArticles.map((a) => (
+                <HelpArticleLi
+                  key={a._id}
+                  id={a._id}
+                  title={a.title}
+                  caption={a.caption}
+                  date={a.date}
+                  categories={a.categories}
+                  toggleArticles={toggleArticles}
+                />
+              ))}
           </ul>
-        </nav>
-        <ul className={c.articles}>
-          {!articleId &&
-            filteredArticles.map((a) => (
-              <HelpArticleLi
-                key={a._id}
-                id={a._id}
-                title={a.title}
-                caption={a.caption}
-                date={a.date}
-                categories={a.categories}
-                toggleArticles={toggleArticles}
-              />
-            ))}
-        
-        </ul>
-        
-      </section>
+        </section>
+      )}
     </section>
   );
 };
