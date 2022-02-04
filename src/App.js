@@ -9,7 +9,7 @@ import ProductPage from "./pages/ProductPage";
 import CartPage from "./pages/CartPage";
 import SignInSignUpPage from "./pages/SignInSignUpPage";
 import HelpPage from "./pages/HelpPage";
-import Article from "./components/HelpArticles/Article";
+import Article from "./pages/Article";
 import ContactPage from "./pages/ContactPage";
 import BrowsePage from "./pages/BrowsePage";
 
