@@ -1,3 +1,17 @@
+# Minastop Ecommerce https://minastop.netlify.app/
+
+
+This is the frontend a project I made that utilizes the **MERN** (MongoDB Express React NodeJs) stack.
+
+The backend part of Minastop is located here: https://github.com/PaulChristian2021/Minastop-Server
+
+(under development)
+-The netlify deployment of this app is not working properly and was just put up for testing purpose.
+-Desirable functions and features under planning.
+-App incomplete.
+
+=============================================
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
