@@ -19,6 +19,9 @@ FINALIZING:
 -reuse style classes
 -refactor
 
+NOTES: 
+-fetching is done with components but saved to redux or passed as props?
+
 
 DONE: 
 

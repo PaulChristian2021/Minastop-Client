@@ -1,6 +1,7 @@
 import React, { useRef } from "react";
+import { useNavigate} from 'react-router-dom'
 import c from "./ProductPage.module.css";
-import SearchCategoriesNav from '../components/SearchCategoriesNav/SearchCategoriesNav'
+import SearchCategoriesNav from "../components/SearchCategoriesNav/SearchCategoriesNav";
 import SearchBar from "../components/SearchBar/SearchBar";
 import BrowseCategory from "../components/BrowseCategory/BrowseCategory";
 import IconButton from "../components/ui/IconButton";
@@ -22,8 +23,19 @@ const prod = {
   stock: 10,
 };
 
+//
+
+const categories = ['lol', 'asdsg']
+
+//
+
 const ProductPage = () => {
   const numberRef = useRef(1);
+  const navigate = useNavigate()
+
+  function filterByCategory(category){
+    navigate.push(`/products/${category}`)
+  }
 
   function setAddNumber(isAdding) {
     if (isAdding) numberRef.current.value++;
@@ -38,7 +50,10 @@ const ProductPage = () => {
     <section className={`section`}>
       <SearchCategoriesNav className={c.nav}>
         <SearchBar placeholder="Find Products" />
-        <BrowseCategory />
+        <BrowseCategory
+          filterByCategory={filterByCategory}
+          categories={categories}
+        />
       </SearchCategoriesNav>
       <header className={c.header}>
         <h2>{prod.name}</h2>
@@ -53,7 +68,10 @@ const ProductPage = () => {
           }}
         >
           <fieldset>
-            <IconButton onClick={() => setAddNumber(false)} className={c.operator}>
+            <IconButton
+              onClick={() => setAddNumber(false)}
+              className={c.operator}
+            >
               <AiOutlineMinus />
             </IconButton>
             <input
@@ -63,7 +81,10 @@ const ProductPage = () => {
               ref={numberRef}
               onChange={(e) => typeAddNumber(e.target.value)}
             />
-            <IconButton onClick={() => setAddNumber(true)} className={c.operator}>
+            <IconButton
+              onClick={() => setAddNumber(true)}
+              className={c.operator}
+            >
               <AiOutlinePlus />
             </IconButton>
           </fieldset>

@@ -9,7 +9,8 @@ export const PRODUCTS = {
 const productsSlice = createSlice({
   name: 'products',
   initialState: {
-    cartItemsNumber: 0,
+    
+    productCategories: [],
     reducers: {
       // crement: function(state,action){
       //   if(action.type === CART.DECREMENT_ITEMS){
