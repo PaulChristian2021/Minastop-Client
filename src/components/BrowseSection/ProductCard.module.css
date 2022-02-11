@@ -2,7 +2,7 @@
   width: 300px;
   height: 370px;
   background-color: #e3e3cd;
-
+  box-shadow: 0 10px 13px 1px rgba(34, 34, 34, 0.316);
   margin: 10px;
 }
 
