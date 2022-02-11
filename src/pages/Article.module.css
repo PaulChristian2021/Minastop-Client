@@ -1,9 +1,12 @@
 .article {
-  height: 100vh;
+  position: relative;
+  top: -50px;
+  z-index: 2;
+  min-height: 70vh;
   width: 100%;
   flex-direction: column;
   background-color: #e3e3cd;
-  padding: 10px;
+  padding: 80px 10px;
 }
 .article > * {
   margin: auto;
@@ -11,11 +14,12 @@
   padding: 5px;
 }
 .article,
-.backBtn, .div, .ul {
+.backBtn, .main, .div, .ul {
   display: flex;
 }
 .nav {
   width: 100%;
+  margin-bottom: 10px;
 }
 .backBtn {
   width: 100px;
@@ -29,6 +33,9 @@
   box-shadow: 0 5px 10px 3px #49494d2c;
 }
 .main {
+  flex-direction: column;
+  justify-content:start;
+  height: fit-content;
   min-height: 80%;
   background-color: white;
   width: 100%;
@@ -45,17 +52,15 @@
   text-align: right;
   display: block;
   margin-right: 20px;
-  /* float: right;
-  /* margin-top: 0px; */ 
-  /* font-size: 14px; */
 }
 
 .div{
-  height: 80%;
+  height: 100%;
   height: fit-content;
   flex-direction: column;
   justify-content: space-evenly;
   width: 100%;
+  padding: 20px 0;
 }
 .ul{
   list-style: none;
@@ -68,7 +73,7 @@
   color: white;
 }
 .div p{
-  height: 50%;
+  /* height: 50%; */
   margin: auto;
   max-width: 500px;
   padding: 10px;

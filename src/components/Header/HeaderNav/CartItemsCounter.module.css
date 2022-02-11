@@ -8,3 +8,9 @@
   font-weight: 600;
   padding: 0 3px ;
 }
+.cartnotEmpty{
+  background-color: #df6747;
+}
+.cartEmpty{
+  background-color: #878D92;
+}

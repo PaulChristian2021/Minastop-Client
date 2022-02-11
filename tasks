@@ -1,6 +1,6 @@
 IN PROGRESS:
 -pages data fetching
-
+-ui branch
 
 
 TODO:
@@ -18,3 +18,7 @@ FINALIZING:
 -reuse style classes
 -refactor
 
+
+DONE: 
+
+-change color of cart icon # to neutral when empty
