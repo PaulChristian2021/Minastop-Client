@@ -14,18 +14,16 @@ const BrowsePage = () => {
   const [filteredProd, setFilteredProd] = useState([]);
 
   const [isLoading, setIsLoading] = useState(true);
-  const {category} = useParams()
-  
-  
+  const { category } = useParams();
+
   useEffect(() => {
     fetch("https://minastop-mern.herokuapp.com/products")
       .then((response) => response.json())
       .then((data) => {
         setprod(data);
+        console.log(data);
       });
-    return () => {
-      
-    };
+    return () => {};
   }, []);
 
   useEffect(() => {
@@ -44,13 +42,13 @@ const BrowsePage = () => {
 
     return () => {
       setIsLoading(false);
-      if(category)setchosenCategory(category) //sets initial selected categories from params
+      if (category) setchosenCategory(category); //sets initial selected categories from params
     };
   }, [prod]);
 
   //changes products displayed based on chosenCategory
   useEffect(() => {
-    if (chosenCategory == '') {
+    if (chosenCategory == "") {
       setFilteredProd(prod);
     } else {
       const filtered = prod.filter((el) => {
@@ -59,26 +57,37 @@ const BrowsePage = () => {
       setFilteredProd(filtered);
     }
   }, [chosenCategory]);
-  
 
   const filterByCategory = (cat) => {
-    
-    if (chosenCategory === '' || chosenCategory !== cat) {
+    if (chosenCategory === "" || chosenCategory !== cat) {
       setchosenCategory(cat);
-    } else if(chosenCategory === cat){
+    } else if (chosenCategory === cat) {
       setchosenCategory("");
     }
-    
   };
-  
+  const search = (typed) => {
+    // (typed)
+    console.log(typed);
+    const searchProd = prod.filter((el) => {
+      return (
+        el.title.toLowerCase().includes(typed.toLowerCase()) ||
+        el.description.toLowerCase().includes(typed.toLowerCase())
+      );
+    });
+    console.log(searchProd)
+    setFilteredProd(searchProd)
+    setchosenCategory('')
+  };
+
   return (
     <section className={`section ${c.section}`}>
       {isLoading && <MoonLoader />}
       {!isLoading && (
         <SearchCategoriesNav className={c.nav}>
-          <SearchBar placeholder="Find products" />
+          <SearchBar placeholder="Find products" onSubmit={search} />
           <BrowseCategory
             filterByCategory={filterByCategory}
+            chosenCategory={chosenCategory}
             categories={categories}
           />
         </SearchCategoriesNav>

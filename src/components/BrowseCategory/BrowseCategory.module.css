@@ -9,14 +9,17 @@
   justify-content: space-between;
   flex-direction: row;
   align-items: center;
+  margin-top: 15px;
 }
 .categories p{
   color: #878d92;
   text-align: center;
+  margin-top: 15px;
 }
 .li{
   list-style: none; 
   margin: 0 1px;
+  
 }
 .li:hover a{
   color: white;
@@ -25,17 +28,33 @@
   text-decoration: none;
   background-color: #878d92;
   color: #e3e3cd;
-  padding: 0 5px;
+  padding: 8px;
   
 }
 .maxwidth500px{
   max-width: 500px;
   margin: auto;
 }
-
+.li a.chosen{
+  color: white;
+  background-color: #49494D;
+}
 @media (max-width:430px) {
   .categories ul{
     flex-direction: column;
+  }
+  .li{
+    margin-top: 10px;
+    
+  }
+  .li a{
+    display: block;
+    width: 300px;
+  }
+}
+@media (min-width:430px) {
+  .li a{
+    padding: 8px 5px;
   }
 }
 @media (min-width:550px) {
