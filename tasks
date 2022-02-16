@@ -1,6 +1,7 @@
 IN PROGRESS:
 -pages data fetching
 -ui branch
+-structure branch
 
 
 TODO:
@@ -10,7 +11,7 @@ TODO:
 
 -change database fetching location
 
-
+-search func in BrowsePage
 
 
 FINALIZING:
@@ -26,3 +27,4 @@ NOTES:
 DONE: 
 
 -change color of cart icon # to neutral when empty
+-category filter func on BrowsePage
