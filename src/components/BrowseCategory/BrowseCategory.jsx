@@ -7,7 +7,6 @@ import { Link } from "react-router-dom";
 const BrowseCategory = ({filterByCategory, categories}) => {
   // const cat = useSelector(state => state.productCategories)
   
-  
   return (
     <div className={`${c.categories} ${c.maxwidth500px}`}>
       <p onMouseEnter={() => {}}>Browse Categories</p>

@@ -13,8 +13,10 @@ const cartSlice = createSlice({
     reducers: {
       crement: function(state,action){
         if(action.type === CART.DECREMENT_ITEMS){
+          console.log('minus')
           state.cartItemsNumber--
         }else if(action.type === CART.INCREMENT_ITEMS){
+          console.log('plus')
           state.cartItemsNumber++
         }
         else return state

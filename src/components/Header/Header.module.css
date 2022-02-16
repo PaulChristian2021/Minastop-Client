@@ -7,6 +7,7 @@
   background-color: #49494d;
 
   position: fixed;
+  z-index: 10;
   transition: .5s;
 }
 .header *{color: white;}

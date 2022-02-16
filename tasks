@@ -1,13 +1,14 @@
 IN PROGRESS:
 -pages data fetching
-
+-ui branch
 
 
 TODO:
 -implement keep alive on Article page.
--login/logout
--Cart page
+-login/logout UI
+-Cart page UI
 
+-change database fetching location
 
 
 
@@ -18,3 +19,10 @@ FINALIZING:
 -reuse style classes
 -refactor
 
+NOTES: 
+-fetching is done with components but saved to redux or passed as props?
+
+
+DONE: 
+
+-change color of cart icon # to neutral when empty
