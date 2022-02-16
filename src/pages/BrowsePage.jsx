@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 import SearchCategoriesNav from "../components/SearchCategoriesNav/SearchCategoriesNav";
 import SearchBar from "../components/SearchBar/SearchBar";
 import BrowseCategory from "../components/BrowseCategory/BrowseCategory";
@@ -10,17 +11,21 @@ const BrowsePage = () => {
   const [categories, setCategories] = useState([]);
   const [chosenCategory, setchosenCategory] = useState("");
   const [prod, setprod] = useState([]);
+  const [filteredProd, setFilteredProd] = useState([]);
 
   const [isLoading, setIsLoading] = useState(true);
-
+  const {category} = useParams()
+  
+  
   useEffect(() => {
     fetch("https://minastop-mern.herokuapp.com/products")
       .then((response) => response.json())
       .then((data) => {
-        console.log(data);
         setprod(data);
       });
-    return () => {};
+    return () => {
+      
+    };
   }, []);
 
   useEffect(() => {
@@ -35,13 +40,37 @@ const BrowsePage = () => {
         return b.length - a.length;
       })
     );
-    console.log(gatheredCategories);
-    return ()=>{setIsLoading(false)}
+    setFilteredProd(prod);
+
+    return () => {
+      setIsLoading(false);
+      if(category)setchosenCategory(category) //sets initial selected categories from params
+    };
   }, [prod]);
 
+  //changes products displayed based on chosenCategory
+  useEffect(() => {
+    if (chosenCategory == '') {
+      setFilteredProd(prod);
+    } else {
+      const filtered = prod.filter((el) => {
+        return el.category == chosenCategory;
+      });
+      setFilteredProd(filtered);
+    }
+  }, [chosenCategory]);
+  
+
   const filterByCategory = (cat) => {
-    setchosenCategory(cat);
+    
+    if (chosenCategory === '' || chosenCategory !== cat) {
+      setchosenCategory(cat);
+    } else if(chosenCategory === cat){
+      setchosenCategory("");
+    }
+    
   };
+  
   return (
     <section className={`section ${c.section}`}>
       {isLoading && <MoonLoader />}
@@ -55,7 +84,10 @@ const BrowsePage = () => {
         </SearchCategoriesNav>
       )}
       {!isLoading && (
-        <BrowseSection products={prod} chosenCategory={chosenCategory} />
+        <BrowseSection
+          products={filteredProd}
+          chosenCategory={chosenCategory}
+        />
       )}
     </section>
   );
