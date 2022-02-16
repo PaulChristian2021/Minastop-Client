@@ -10,3 +10,23 @@
   flex-wrap: wrap;
   margin: auto;
 }
+.noresult{
+  height: 50vh;
+  min-width: 300px;
+  display: flex;
+  justify-content: center;
+  border: 2px dashed gray;
+  text-align: center;
+  padding-top: 10%;
+}
+@media (min-width: 431px) {
+  .noresult{
+    width: 378px; 
+  }
+}
+@media (min-width: 550px) {
+  .noresult{
+    
+    width: 500px; 
+  }
+}
