@@ -8,6 +8,7 @@ TODO:
 -login/logout UI
 -Cart page UI
 
+-change database fetching location
 
 
 
@@ -17,6 +18,9 @@ FINALIZING:
 -additional features?
 -reuse style classes
 -refactor
+
+NOTES: 
+-fetching is done with components but saved to redux or passed as props?
 
 
 DONE: 

@@ -1,6 +1,5 @@
 import React from "react";
 
-
 import c from './BrowseCategory.module.css'
 import { Link } from "react-router-dom";
 
