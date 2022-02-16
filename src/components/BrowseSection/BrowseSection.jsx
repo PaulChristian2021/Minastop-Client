@@ -7,12 +7,12 @@ const BrowseSection = (props) => {
   const productCards = props.products.map((el) => (
     <ProductCard
       key={el._id}
-      id={el._id}
+      _id={el._id}
       description={el.description}
       price={el.price}
       category={el.category}
-      name={el.title}
-      img={el.image}
+      title={el.title}
+      image={el.image}
       ratingrate={el.ratingrate}
       ratingcount={el.ratingcount}
       stock={el.stock}

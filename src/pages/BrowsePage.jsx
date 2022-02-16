@@ -7,7 +7,7 @@ import BrowseSection from "../components/BrowseSection/BrowseSection";
 import c from "./BrowsePage.module.css";
 import MoonLoader from "react-spinners/MoonLoader";
 
-const BrowsePage = () => {
+const BrowsePage = (props) => {
   const [categories, setCategories] = useState([]);
   const [chosenCategory, setchosenCategory] = useState("");
   const [prod, setprod] = useState([]);
@@ -21,7 +21,7 @@ const BrowsePage = () => {
       .then((response) => response.json())
       .then((data) => {
         setprod(data);
-        console.log(data);
+        props.getAllProducts(data)
       });
     return () => {};
   }, []);

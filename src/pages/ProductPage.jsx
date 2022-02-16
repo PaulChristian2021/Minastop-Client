@@ -1,40 +1,56 @@
-import React, { useRef } from "react";
-import { useNavigate} from 'react-router-dom'
+import React, { useRef, useState, useEffect } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 import c from "./ProductPage.module.css";
 import SearchCategoriesNav from "../components/SearchCategoriesNav/SearchCategoriesNav";
 import SearchBar from "../components/SearchBar/SearchBar";
 import BrowseCategory from "../components/BrowseCategory/BrowseCategory";
 import IconButton from "../components/ui/IconButton";
 import { AiOutlineMinus, AiOutlinePlus } from "react-icons/ai";
-// import { BsCartPlus } from "react-icons/bs";
 
-const prod = {
-  id: 1,
-  name: "Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops",
-  price: 109.95,
-  description:
-    "Your perfect pack for everyday use and walks in the forest. Stash your laptop (up to 15 inches) in the padded sleeve, your everyday",
-  category: "men's clothing",
-  img: "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg",
-  rating: {
-    rate: 3.9,
-    count: 120,
-  },
-  stock: 10,
+const dummyprod = {
+  category: "Loading",
+  description: "Product descrription",
+  image: "image url",
+  price: 0.0,
+  ratingcount: 0,
+  ratingrate: 0,
+  stock: 0,
+  title: "Title",
+  _id: "",
 };
 
 //
 
-const categories = ['lol', 'asdsg']
+const categories = [
+  "women's clothing",
+  "men's clothing",
+  "electronics",
+  "jewelery",
+];
 
 //
 
-const ProductPage = () => {
+const ProductPage = (props) => {
+  const { product } = useParams();
   const numberRef = useRef(1);
-  const navigate = useNavigate()
+  const navigate = useNavigate();
+  const [theProduct, setTheProduct] = useState(dummyprod);
+  console.log(props.products);
+  useEffect(() => {
+    console.log(props.products);
+    const x = props.products.filter((el) => {
+      return product.toLowerCase().trim() == el.title.toLowerCase().trim();
+    });
+    console.log(x);
+    setTheProduct(x[0]);
+    console.log(theProduct, product);
+    return () => {
+      console.log(theProduct);
+    };
+  }, []);
 
-  function filterByCategory(category){
-    navigate.push(`/products/${category}`)
+  function filterByCategory(category) {
+    navigate.push(`/products/${category}`);
   }
 
   function setAddNumber(isAdding) {
@@ -56,11 +72,11 @@ const ProductPage = () => {
         />
       </SearchCategoriesNav>
       <header className={c.header}>
-        <h2>{prod.name}</h2>
-        <sub>{prod.category}</sub>
+        <h2>{theProduct.title}</h2>
+        <sub>{theProduct.category}</sub>
       </header>
       <div className={c.div}>
-        <img src={prod.img} alt={prod.name} />
+        <img src={theProduct.image} alt={theProduct.title} />
         <form
           className={c.form}
           onSubmit={(e) => {

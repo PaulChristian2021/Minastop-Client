@@ -12,6 +12,7 @@ import HelpPage from "./pages/HelpPage";
 import Article from "./pages/Article";
 import ContactPage from "./pages/ContactPage";
 import BrowsePage from "./pages/BrowsePage";
+import { useState } from "react";
 
 function App() {
 
@@ -22,7 +23,12 @@ function App() {
   //   return ()=>{console.log(helpArticles)}
   // }, [helpArticles]);
   
-
+  const [products, setProducts] = useState([])
+  function getAllProducts(prod){
+    setProducts(prod)
+    console.log(prod)
+  }
+  console.log(products)
 
   return (
     <>
@@ -31,9 +37,9 @@ function App() {
 
         <Routes>
           <Route path="/" element={<HomePage />} />
-          <Route path="/browse" element={<BrowsePage />} />
+          <Route path="/browse" element={<BrowsePage getAllProducts={getAllProducts}/>} />
           <Route path="/products/:category" element={<BrowsePage />} />
-          <Route path="/products/:category/:product" element={<ProductPage />} />
+          <Route path="/products/:category/:product" element={<ProductPage products={products}/>} />
           <Route path="/cart" element={<CartPage />} />
           <Route path="/sign" element={<SignInSignUpPage />} />
           <Route path="/help" element={<HelpPage />} />
